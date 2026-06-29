@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hangman</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+    <main class="game">
+        <h1>Hangman</h1>
+
+        <!-- SVG gallows; parts are revealed as wrong guesses accumulate -->
+        <svg id="figure" viewBox="0 0 200 220" class="figure">
+            <!-- gallows (always visible) -->
+            <line x1="20" y1="210" x2="120" y2="210" />
+            <line x1="60" y1="210" x2="60" y2="20" />
+            <line x1="60" y1="20" x2="140" y2="20" />
+            <line x1="140" y1="20" x2="140" y2="45" />
+            <!-- body parts (toggled via JS) -->
+            <circle class="part" data-part="0" cx="140" cy="62" r="18" />
+            <line   class="part" data-part="1" x1="140" y1="80"  x2="140" y2="140" />
+            <line   class="part" data-part="2" x1="140" y1="95"  x2="115" y2="120" />
+            <line   class="part" data-part="3" x1="140" y1="95"  x2="165" y2="120" />
+            <line   class="part" data-part="4" x1="140" y1="140" x2="118" y2="180" />
+            <line   class="part" data-part="5" x1="140" y1="140" x2="162" y2="180" />
+        </svg>
+
+        <p id="message" class="message">&nbsp;</p>
+
+        <div id="word" class="word"></div>
+
+        <p class="status">
+            Wrong guesses left: <span id="wrong-left">6</span>
+        </p>
+
+        <div id="keyboard" class="keyboard"></div>
+
+        <button id="new-game" class="new-game">New Game</button>
+    </main>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

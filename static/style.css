@@ -1,0 +1,123 @@
+:root {
+    --bg: #1e1f29;
+    --panel: #282a36;
+    --text: #f8f8f2;
+    --accent: #50fa7b;
+    --danger: #ff5555;
+    --muted: #6272a4;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.game {
+    background: var(--panel);
+    padding: 2rem 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    width: min(440px, 92vw);
+}
+
+h1 {
+    margin: 0 0 1rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.figure {
+    width: 200px;
+    height: 220px;
+}
+
+.figure line,
+.figure circle {
+    stroke: var(--text);
+    stroke-width: 4;
+    stroke-linecap: round;
+    fill: none;
+}
+
+/* Body parts hidden until revealed */
+.figure .part {
+    visibility: hidden;
+    stroke: var(--danger);
+}
+.figure .part.show {
+    visibility: visible;
+}
+
+.message {
+    min-height: 1.5rem;
+    margin: 0.5rem 0;
+    font-weight: 600;
+}
+.message.win  { color: var(--accent); }
+.message.lose { color: var(--danger); }
+
+.word {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 2rem;
+    font-family: "Courier New", monospace;
+    letter-spacing: 2px;
+    margin: 1rem 0;
+    min-height: 2.5rem;
+}
+
+.word span {
+    width: 1.4rem;
+    border-bottom: 3px solid var(--muted);
+    text-transform: uppercase;
+}
+
+.status {
+    color: var(--muted);
+    margin: 0.5rem 0 1rem;
+}
+
+.keyboard {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    margin-bottom: 1.25rem;
+}
+
+.keyboard button {
+    padding: 0.55rem 0;
+    border: none;
+    border-radius: 8px;
+    background: var(--muted);
+    color: var(--text);
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.05s ease, opacity 0.2s ease;
+}
+.keyboard button:hover:not(:disabled) { transform: translateY(-2px); }
+.keyboard button:disabled { cursor: default; opacity: 0.45; }
+.keyboard button.correct { background: var(--accent); color: #000; }
+.keyboard button.wrong   { background: var(--danger); }
+
+.new-game {
+    padding: 0.7rem 1.5rem;
+    border: 2px solid var(--accent);
+    border-radius: 10px;
+    background: transparent;
+    color: var(--accent);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+.new-game:hover { background: var(--accent); color: #000; }
